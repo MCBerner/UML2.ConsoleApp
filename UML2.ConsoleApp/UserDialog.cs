@@ -11,56 +11,59 @@ namespace UML2.ConsoleApp
     {
         MenuCatalog _menuCatalog;
         PizzaStore _pmama;
-        MenuCatalog _pUpdateList;
+        
         public UserDialog(MenuCatalog menuCatalog)
         {
-            
+
             _menuCatalog = menuCatalog;
             _pmama = new PizzaStore();
-            _pUpdateList = new MenuCatalog();
+            
         }
 
-        Pizza AddNewPizza()
-        {           
+        public Pizza AddNewPizza()
+        {
             Pizza pizzaItem = new Pizza();
             _pmama.BigMamaLogo();
-            
+           
             Console.WriteLine("***********************");
             Console.WriteLine("*     Tilføj Pizza    *");
             Console.WriteLine("***********************");
             Console.WriteLine();
-            Console.Write("Tilføj navn: ");
-            pizzaItem.pizzaName = Console.ReadLine();
-
             string input = "";
-            Console.Write("Tilføj pris: ");
-            try
-            {
-                input = Console.ReadLine();
-                pizzaItem.pizzaPrice = Int32.Parse(input);
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine($"Unable to parse '{input}' - Message: {e.Message}");
-                throw;
-            }
-
-            input = "";
+            _menuCatalog.ReadAndPrintPizzaList();
             Console.Write("Tilføj pizzanummer: ");
             try
             {
                 input = Console.ReadLine();
-                pizzaItem.pizzaNumber = Int32.Parse(input);
-               
+
+                pizzaItem.PizzaNumber = Int32.Parse(input);
+
             }
             catch (FormatException e)
             {
                 Console.WriteLine($"Unable to parse '{input}' - Message: {e.Message}");
                 throw;
             }
-            
+
+            Console.Write("Tilføj navn: ");
+            pizzaItem.PizzaName = Console.ReadLine();
+
+            input = "";
+            Console.Write("Tilføj pris: ");
+            try
+            {
+                input = Console.ReadLine();
+                pizzaItem.PizzaPrice = Int32.Parse(input);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Unable to parse '{input}' - Message: {e.Message}");
+                throw;
+            }
+
+
             return pizzaItem;
-            
+
         }
         private int RemovePizza()
         {
@@ -71,9 +74,9 @@ namespace UML2.ConsoleApp
             Console.WriteLine("*      Fjern Pizza    *");
             Console.WriteLine("***********************");
             Console.WriteLine();
-           
-            string input = "";            
-                      
+
+            string input = "";
+            _menuCatalog.ReadAndPrintPizzaList();
             Console.Write("Indtast pizzanummer: ");
             try
             {
@@ -91,7 +94,83 @@ namespace UML2.ConsoleApp
 
         }
 
-        public void Run() 
+
+        public Pizza UpdatePizza()
+        {
+            Pizza pizzaItem = new Pizza();
+            _pmama.BigMamaLogo();
+
+            Console.WriteLine("***********************");
+            Console.WriteLine("*    Opdater Pizza    *");
+            Console.WriteLine("***********************");
+            Console.WriteLine();
+            string input = "";
+            _menuCatalog.ReadAndPrintPizzaList();
+            Console.Write("Vælg pizza: ");
+            try
+            {
+                input = Console.ReadLine();
+
+                pizzaItem.PizzaNumber = Int32.Parse(input);
+
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Unable to parse '{input}' - Message: {e.Message}");
+                throw;
+            }
+
+            Console.Write("Tilføj navn: ");
+            pizzaItem.PizzaName = Console.ReadLine();
+
+            input = "";
+            Console.Write("Tilføj pris: ");
+            try
+            {
+                input = Console.ReadLine();
+                pizzaItem.PizzaPrice = Int32.Parse(input);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Unable to parse '{input}' - Message: {e.Message}");
+                throw;
+            }
+
+
+            return pizzaItem;
+
+        }
+
+
+        public int SearchPizza()
+        {
+            //Pizza pizzaItem = new Pizza();
+            _pmama.BigMamaLogo();
+            int pizzaNummer;
+
+            Console.WriteLine("***********************");
+            Console.WriteLine("*       Søg Pizza     *");
+            Console.WriteLine("***********************");
+            Console.WriteLine();
+            string input = "";
+            //_menuCatalog.ReadAndPrintPizzaList();
+            Console.Write("Indtast pizza nummer: ");
+            try
+            {
+                input = Console.ReadLine();
+                pizzaNummer = Int32.Parse(input);
+
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Unable to parse '{input}' - Message: {e.Message}");
+                throw;
+            }
+            return pizzaNummer;
+        }
+
+
+            public void Run() 
         {
 
             _pmama.BigMamaLogo();
@@ -103,11 +182,9 @@ namespace UML2.ConsoleApp
                 "2. Tilføj ny pizza",
                 "3. Fjern Pizza",
                 "4. Opdater Pizza",
-               
+                "5. Søg Pizza",
             };
             int i = MainMenuChoice(mainMenuList);
-
-
 
             while (proceed) 
             {
@@ -124,19 +201,15 @@ namespace UML2.ConsoleApp
                     case 0:
                         proceed = false;
                         Console.WriteLine("BIG MAMA´S PIZZA ønsker dig en dejlig dag");
-                        Console.Write("Hit any key to continue");
+                        Console.Write("Tryk på en tast for at afslutte");
                         Console.ReadKey();
                         break;
                     case 1:
-
-                        
                         Console.Clear();
                         _pmama.BigMamaLogo();
-                        Console.WriteLine("Du valgte nummer 1");
-                        //PizzaStore.AddNewPizza();
-                        _menuCatalog.ReadAndPrintPizzaList();
-                        //pizzaStore.PrintMenuCatalog();                       
-                        Console.Write("Hit any key to continue");
+                       
+                        _menuCatalog.ReadAndPrintPizzaList();                       
+                        Console.Write("Tryk på en tast for at fortsætte");
                         Console.ReadKey();
                         Run();
                         break;
@@ -144,6 +217,7 @@ namespace UML2.ConsoleApp
                         
                         try
                         {
+                            _menuCatalog.ReadAndPrintPizzaList();
                             Pizza pizza = AddNewPizza();
                             _menuCatalog.AddToList(pizza);
                             _menuCatalog.ReadAndPrintPizzaList();
@@ -154,7 +228,7 @@ namespace UML2.ConsoleApp
                         catch (Exception)
                         {
                             
-                            Console.WriteLine($"No pizza created");
+                            Console.WriteLine($"Pizza´en blev ikke oprettet");
                         }                      
                         Console.Write("Hit any key to continue");
                         Console.ReadKey();
@@ -181,9 +255,32 @@ namespace UML2.ConsoleApp
 
                         break;
                     case 4:
-                        Console.WriteLine("Du valgte nummer 4");
-                        Console.Write("Hit any key to continue");
+                        try
+                        {
+
+                            Pizza pizza = UpdatePizza();
+                            _menuCatalog.UpdatePizza(pizza);
+                            _menuCatalog.ReadAndPrintPizzaList();
+                            
+                            Console.ReadKey();
+                            Run();
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine($"Pizza blev ikke fundet.");
+                            Console.Write("Indtast igen.");
+                            Console.ReadKey();
+                           
+                        }
+                        
                         Console.ReadKey();
+                        
+                        break;
+                    case 5:
+                        int pizzaNumberSearch = SearchPizza();
+                        _menuCatalog.ReadAndPrintPizza(pizzaNumberSearch);
+                        Console.ReadKey();
+                        Run();
                         break;
                     default:
                         Console.Write("Hit any key to continue");
@@ -193,14 +290,12 @@ namespace UML2.ConsoleApp
                 }
             }
 
-            //Console.Clear();
-            Console.WriteLine("Et skridt ad gangen");
-            //Run();
+           
             Console.ReadKey();
         }
         int MainMenuChoice(List<string> menuItems)
         {
-            //_pmama.BigMamaPrint();
+           
             Console.WriteLine("Indtast dit valg:");
             foreach (string choice in menuItems)
             {

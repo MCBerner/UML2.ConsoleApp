@@ -14,26 +14,24 @@ namespace UML2.ConsoleApp
 
         public Pizza() 
         {
-            _pizzaNumber = pizzaNumber;
-            _pizzaName = pizzaName;
-            _pizzaPrice = pizzaPrice;
+            _pizzaNumber = PizzaNumber;
+            _pizzaName = PizzaName;
+            _pizzaPrice = PizzaPrice;
         }
 
-        
-
-        public int pizzaNumber
+        public int PizzaNumber
         {
             get { return _pizzaNumber; }
             set { _pizzaNumber = value; }
 
         }
-        public string pizzaName
+        public string PizzaName
         {
             get { return _pizzaName; }
             set { _pizzaName = value; }
 
         }
-        public double pizzaPrice 
+        public double PizzaPrice 
         {
             get { return _pizzaPrice; }
             set { _pizzaPrice = value; }
@@ -41,7 +39,7 @@ namespace UML2.ConsoleApp
          
         public override string ToString()
         {
-            return $"Number: {pizzaNumber}, Name: {pizzaName}, Price: {pizzaPrice}";
+            return $"Number: {PizzaNumber}, Name: {PizzaName}, Price: {PizzaPrice}";
         }
     }
 

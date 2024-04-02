@@ -10,36 +10,32 @@ namespace UML2.ConsoleApp
     {
         MenuCatalog menuCatalog;
          
-
         public PizzaStore()
         {
             menuCatalog = new MenuCatalog();
         }
         public void PrintMenuCatalog() 
-        {
-            //BigMamaPrint();
-            
-            Pizza p = new Pizza() { pizzaNumber = 1, pizzaName = "Margherita", pizzaPrice = 69,};
+        {            
+            Pizza p = new Pizza() { PizzaNumber = 1, PizzaName = "Margherita", PizzaPrice = 69,};
             menuCatalog.AddToList(p);
 
-            p = new Pizza() { pizzaNumber = 2, pizzaName = "Vesuvio", pizzaPrice = 70, };
+            p = new Pizza() { PizzaNumber = 2, PizzaName = "Vesuvio", PizzaPrice = 70, };
             menuCatalog.AddToList(p);
 
-            p = new Pizza() { pizzaNumber = 3, pizzaName = "Calzone", pizzaPrice = 75, };
+            p = new Pizza() { PizzaNumber = 3, PizzaName = "Calzone", PizzaPrice = 75, };
             menuCatalog.AddToList(p);
 
             p = new Pizza();
-            p.pizzaNumber = 4;
-            p.pizzaName = "Berner speciale";
-            p.pizzaPrice = 145;
+            p.PizzaNumber = 4;
+            p.PizzaName = "Berner speciale";
+            p.PizzaPrice = 145;
             menuCatalog.AddToList(p);
-            menuCatalog.ReadAndPrintPizzaList();
+            menuCatalog.ReadAndPrintPizzaList(); 
 
             Console.WriteLine("********************************************");
             Console.WriteLine("*   Tryk en tast for at se user dialog     *");
             Console.WriteLine("********************************************");
-            Console.ReadKey();
-            
+            Console.ReadKey(); 
         }
 
         
@@ -47,6 +43,7 @@ namespace UML2.ConsoleApp
         {
             new UserDialog(menuCatalog).Run();
         }
+
         public void BigMamaLogo() 
         {
             Console.Clear();
@@ -55,9 +52,7 @@ namespace UML2.ConsoleApp
             Console.WriteLine("*           BIG MAMA´S PIZZA               *");
             Console.WriteLine("********************************************");
             Console.WriteLine();
-
-            //menuCatalog.ReadAndPrintPizzaList();
-
         }
+
     }
 }
