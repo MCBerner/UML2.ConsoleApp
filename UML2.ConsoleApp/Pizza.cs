@@ -8,9 +8,9 @@ namespace UML2.ConsoleApp
 {
     public class Pizza
     {
-        int _pizzaNumber;
-        string _pizzaName;
-        double _pizzaPrice;
+        private int _pizzaNumber;
+        private string _pizzaName;
+        private double _pizzaPrice;
 
         public Pizza() 
         {

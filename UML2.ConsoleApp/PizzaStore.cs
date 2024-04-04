@@ -8,7 +8,7 @@ namespace UML2.ConsoleApp
 {
     public class PizzaStore
     {
-        MenuCatalog menuCatalog;
+        private MenuCatalog menuCatalog;
          
         public PizzaStore()
         {

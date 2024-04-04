@@ -11,7 +11,7 @@ namespace UML2.ConsoleApp
     public class MenuCatalog
     {
         //Instance field
-        List<Pizza> _pizzaList;
+        private List<Pizza> _pizzaList;
         
         //Construtor
         //Opretter _pizzaList objectet

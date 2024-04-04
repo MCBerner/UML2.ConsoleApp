@@ -9,8 +9,8 @@ namespace UML2.ConsoleApp
 {
     public class UserDialog
     {
-        MenuCatalog _menuCatalog;
-        PizzaStore _pmama;
+        private MenuCatalog _menuCatalog;
+        private PizzaStore _pmama;
         
         public UserDialog(MenuCatalog menuCatalog)
         {
@@ -145,7 +145,7 @@ namespace UML2.ConsoleApp
 
         public int SearchPizza()
         {
-            //Pizza pizzaItem = new Pizza();
+            
             _pmama.BigMamaLogo();
             int pizzaNummer;
 
@@ -154,7 +154,7 @@ namespace UML2.ConsoleApp
             Console.WriteLine("***********************");
             Console.WriteLine();
             string input = "";
-            //_menuCatalog.ReadAndPrintPizzaList();
+            
             Console.Write("Indtast pizza nummer: ");
             try
             {
