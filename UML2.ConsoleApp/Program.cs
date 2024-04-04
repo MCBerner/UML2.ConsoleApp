@@ -10,7 +10,7 @@ namespace UML2.ConsoleApp
             pizzastore.BigMamaLogo();
             pizzastore.PrintMenuCatalog();
             //Console.Write("Du befinder dig i klassen program!");
-            Console.ReadKey();
+            //Console.ReadKey();
             pizzastore.Run();
             //pizzastore.BigMamaLogo();
             //Console.Write("Du befinder dig IGEN i klassen program!");

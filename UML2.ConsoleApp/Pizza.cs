@@ -39,7 +39,7 @@ namespace UML2.ConsoleApp
          
         public override string ToString()
         {
-            return $"Number: {PizzaNumber}, Name: {PizzaName}, Price: {PizzaPrice}";
+            return $"Nummer: {PizzaNumber}, Navn: {PizzaName}, Pris: {PizzaPrice}";
         }
     }
 

@@ -30,6 +30,7 @@ namespace UML2.ConsoleApp
             Console.WriteLine("***********************");
             Console.WriteLine();
             string input = "";
+
             _menuCatalog.ReadAndPrintPizzaList();
             Console.Write("Tilføj pizzanummer: ");
             try
@@ -65,7 +66,7 @@ namespace UML2.ConsoleApp
             return pizzaItem;
 
         }
-        private int RemovePizza()
+        public int RemovePizza()
         {
             int pizzaNumber;
             _pmama.BigMamaLogo();
@@ -183,6 +184,7 @@ namespace UML2.ConsoleApp
                 "3. Fjern Pizza",
                 "4. Opdater Pizza",
                 "5. Søg Pizza",
+                "6. Test pizza funktionalitet",
             };
             int i = MainMenuChoice(mainMenuList);
 
@@ -190,11 +192,8 @@ namespace UML2.ConsoleApp
             {
                 //int testMenuList = Int32.Parse(Console.ReadKey().KeyChar.ToString());
                 int testMenuList = i;//MenuChoice = MainMenuChoice(mainMenuList);
-                //Console.WriteLine();
-               
-
+                
                 Console.Clear();
-                //Console.ReadLine();
                 PizzaStore pizzaStore = new PizzaStore();
                 switch (testMenuList) 
                 {
@@ -221,7 +220,7 @@ namespace UML2.ConsoleApp
                             Pizza pizza = AddNewPizza();
                             _menuCatalog.AddToList(pizza);
                             _menuCatalog.ReadAndPrintPizzaList();
-                           
+
                             Console.ReadKey();
                             Run();
                         }
@@ -279,6 +278,11 @@ namespace UML2.ConsoleApp
                     case 5:
                         int pizzaNumberSearch = SearchPizza();
                         _menuCatalog.ReadAndPrintPizza(pizzaNumberSearch);
+                        Console.ReadKey();
+                        Run();
+                        break;
+                    case 6:
+                        pizzaStore.TestPizzaFunctions();
                         Console.ReadKey();
                         Run();
                         break;

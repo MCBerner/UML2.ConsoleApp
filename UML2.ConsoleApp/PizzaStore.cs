@@ -30,12 +30,34 @@ namespace UML2.ConsoleApp
             p.PizzaName = "Berner speciale";
             p.PizzaPrice = 145;
             menuCatalog.AddToList(p);
-            menuCatalog.ReadAndPrintPizzaList(); 
+            menuCatalog.ReadAndPrintPizzaList();
 
+            Console.WriteLine("");
             Console.WriteLine("********************************************");
-            Console.WriteLine("*   Tryk en tast for at se user dialog     *");
+            Console.WriteLine("*   Tryk en tast for at se bruger menu     *");
             Console.WriteLine("********************************************");
             Console.ReadKey(); 
+        }
+
+        public void TestPizzaFunctions()
+        {
+            PrintMenuCatalog();
+            menuCatalog.ReadAndPrintPizzaList();
+            Console.WriteLine("");
+
+            Pizza p = new Pizza() { PizzaNumber = 100, PizzaName = "Hawai", PizzaPrice = 69, };
+            menuCatalog.AddToList(p);
+            menuCatalog.ReadAndPrintPizzaList();
+            Console.WriteLine("");
+           
+            Pizza updatePizza = new Pizza() { PizzaNumber = 100, PizzaName = "Kebab pizza", PizzaPrice = 80, };
+            menuCatalog.UpdatePizza(updatePizza);
+            menuCatalog.ReadAndPrintPizzaList();
+            Console.WriteLine("");
+           
+            menuCatalog.RemoveFromList(100);
+            menuCatalog.ReadAndPrintPizzaList();
+            Console.WriteLine("");
         }
 
         
@@ -53,6 +75,10 @@ namespace UML2.ConsoleApp
             Console.WriteLine("********************************************");
             Console.WriteLine();
         }
+
+     
+
+       
 
     }
 }
